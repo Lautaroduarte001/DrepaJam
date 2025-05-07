@@ -1,0 +1,78 @@
+/* src/components/FormContainer/FormContainer.module.css */
+
+/* Para el fondo y centrarlo */
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background: url('/images/dre.jpg') no-repeat center center;
+    background-size: cover;
+  }
+  
+  /* El “marco” de vidrio esmerilado */
+  .contenedor {
+    position: relative;
+    width: 400px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* No fija altura, deja que crezca según contenido */
+  }
+  
+  /* El logo centrado arriba (opcional) */
+  .logo {
+    width: 150px;
+    height: 150px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+  
+  /* Título de la forma (“Iniciar Sesión” o “Registrarse”) */
+  .title {
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0 20px;
+  }
+  
+  /* Mensajes de error genéricos (puedes ajustarlo) */
+  .error {
+    color: #fd0000;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Pie de página con el link a la otra ruta */
+  .bottom {
+    font-size: 0.9rem;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .bottom a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .bottom a:hover {
+    text-decoration: underline;
+  }
+
+  .arroba{
+    position: absolute;
+    color: #fff;
+    font-size: 1.6rem;
+    top: 19px;
+    left: -17px;
+    height: 15px;
+    width: 15px;
+}
