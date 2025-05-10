@@ -1,5 +1,5 @@
 // src/components/FormContainer/FormContainer.tsx
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './FormContainer.module.css'
 
@@ -12,14 +12,14 @@ interface Props {
   bottomLinkTo: string
 }
 
-const FormContainer: React.FC<Props> = ({
+const FormContainer = ({
   logo,
   title,
   children,
   bottomText,
   bottomLinkText,
   bottomLinkTo,
-}) => (
+}: Props) => (
   <section className={styles.section}>
     <div className={styles.contenedor}>
       {logo && <img src={logo} alt="logo" className={styles.logo} draggable={false} />}

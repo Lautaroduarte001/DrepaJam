@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login        from './pages/Login/Login'
 import Register     from './pages/Register/Register'
 import BackgroundScene from './components/BackgroundScene/BackgroundScene'
+import Home from './pages/Home'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
           <Route path="/login"    element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Home />} />
 
           {/* Cualquier otra ruta vuelve a "/login" */}
           <Route path="*" element={<Navigate to="/login" replace />} />

@@ -1,5 +1,5 @@
 // src/pages/Login/Login.tsx
-import React, { useState } from 'react'
+import { useState,ChangeEvent,FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import FormContainer from '../../components/FormContainer/FormContainer'
 import InputField from '../../components/InputField/InputField'
@@ -8,25 +8,26 @@ import logo from '/images/logo.png'
 import arroba from '/images/arroba.png'
 import inputStyles from '../../components/InputField/InputField.module.css'
 import loginStyles from './Login.module.css'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 interface LoginForm {
   usuario: string
   password: string
 }
 
-const Login: React.FC = () => {
+const Login = () => {
   const [form, setForm] = useState<LoginForm>({ usuario: '', password: '' })
   const [error, setError] = useState<string | null>(null)
   const navigate = useNavigate()
 
   // 1) handler para inputs
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setForm(f => ({ ...f, [name]: value }))
   }
 
   // 2) handler para el submit
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError(null)
     try {
@@ -55,7 +56,8 @@ const Login: React.FC = () => {
       bottomLinkText="Registrate"
       bottomLinkTo="/register"
     >
-      {error && <div className={loginStyles.error}>{error}</div>}
+      {error && <ErrorMessage message={error} />}
+
 
       <form onSubmit={handleSubmit} noValidate>
         <InputField

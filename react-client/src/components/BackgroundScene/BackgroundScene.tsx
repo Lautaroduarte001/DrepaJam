@@ -14,7 +14,8 @@ function SoundWaveParticles() {
   const geo = useRef<THREE.BufferGeometry>(null!)
   const { viewport } = useThree()
   const { width, height } = viewport
-  const count = 10000
+  const count = 12000
+
 
   // 1) generamos posiciones X/Y una sola vez
   const positions = useMemo(() => {
@@ -41,7 +42,7 @@ function SoundWaveParticles() {
     const audioEl = new Audio('/back_in_black.mp3')
     audioEl.crossOrigin = 'anonymous'
     audioEl.loop = true
-    audioEl.volume = 0.5
+    audioEl.volume = 1
 
     const ctx = new AudioContext()
     const src = ctx.createMediaElementSource(audioEl)

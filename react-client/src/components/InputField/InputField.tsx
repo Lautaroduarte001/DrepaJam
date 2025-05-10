@@ -1,5 +1,5 @@
 // src/components/InputField/InputField.tsx
-import React from 'react'
+import { ReactNode } from 'react'
 import styles from './InputField.module.css'
 
 export interface InputFieldProps {
@@ -8,16 +8,16 @@ export interface InputFieldProps {
   name: string
   value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  iconLeft?: React.ReactNode
-  iconRight?: React.ReactNode
+  iconLeft?: ReactNode
+  iconRight?: ReactNode
   iconLeftClassName?: string
   iconRightClassName?: string
 }
 
-const InputField: React.FC<InputFieldProps> = ({
+const InputField = ({
   label, type, name, value, onChange,
   iconLeft, iconRight, iconLeftClassName, iconRightClassName,
-}) => (
+}: InputFieldProps) => (
   <div className={styles.container}>
     {iconLeft && (
       <span className={`${styles.iconLeft} ${iconLeftClassName||''}`}>
