@@ -1,74 +1,77 @@
-import React, { useState } from 'react';
-import Styles from './SideBar.module.css';
-import { Menu, X } from 'lucide-react'; // Íconos de hamburguesa y cierre
+// src/components/Sidebar/SideBar.tsx
+import React from "react";
+import Styles from "./SideBar.module.css";
+import { X } from "lucide-react";
+
+interface MenuItem {
+  name: string;
+  icon: React.ReactNode;
+  path: string;
+}
 
 interface Props {
   logo: string;
   bottomLogo: string;
-  menuItems: {
-    name: string;
-    icon: React.ReactNode;
-    path: string;
-  }[];
+  menuItems: MenuItem[];
   currentPath: string;
-  children?: React.ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-const SideBar = ({
+const SideBar: React.FC<Props> = ({
   logo,
   bottomLogo,
   menuItems,
   currentPath,
-}: Props) => {
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
-
-  const toggleMobileMenu = () => setIsMobileOpen(prev => !prev);
-
+  isOpen,
+  onClose
+}) => {
   return (
     <>
-      {/* Botón hamburguesa visible solo en mobile */}
-      <div className={Styles.hamburgerMenu} onClick={toggleMobileMenu}>
-        <Menu size={28} />
-      </div>
-
-      {/* Sidebar Desktop */}
+      {/* Desktop sidebar */}
       <aside className={Styles.sidebarContainer}>
         <div className={Styles.logoContainer}>
           <img src={logo} alt="Logo" />
         </div>
-
         <nav className={Styles.menu}>
-          {menuItems.map(item => (
+          {menuItems.map((item) => (
             <div
               key={item.name}
-              className={`${Styles.menuItem} ${currentPath === item.path ? Styles.active : ''}`}
+              className={
+                currentPath === item.path
+                  ? `${Styles.menuItem} ${Styles.active}`
+                  : Styles.menuItem
+              }
             >
               {item.icon}
               <span>{item.name}</span>
             </div>
           ))}
         </nav>
-
         <div className={Styles.bottomLogo}>
           <img src={bottomLogo} alt="Bottom Logo" />
         </div>
       </aside>
 
-      {/* Sidebar Mobile Modal */}
-      {isMobileOpen && (
+      {/* Mobile modal */}
+      {isOpen && (
         <div className={Styles.mobileSidebar}>
           <div className={Styles.mobileHeader}>
-            <X onClick={toggleMobileMenu} size={28} />
+            <X onClick={onClose} size={28} />
           </div>
           <div className={Styles.logoContainer}>
             <img src={logo} alt="Logo" />
           </div>
           <nav className={Styles.menu}>
-            {menuItems.map(item => (
+            {menuItems.map((item) => (
               <div
                 key={item.name}
-                className={`${Styles.menuItem} ${currentPath === item.path ? Styles.active : ''}`}
-                onClick={toggleMobileMenu}
+                className={
+                  currentPath === item.path
+                    ? `${Styles.menuItem} ${Styles.active}`
+                    : Styles.menuItem
+                }
+                onClick={onClose}
               >
                 {item.icon}
                 <span>{item.name}</span>

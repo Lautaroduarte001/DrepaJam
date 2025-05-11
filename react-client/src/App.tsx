@@ -1,7 +1,7 @@
 // src/App.tsx
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import Login        from './pages/Login/Login'
-import Register     from './pages/Register/Register'
+import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
 import BackgroundScene from './components/BackgroundScene/BackgroundScene'
 import Home from './pages/Home'
 

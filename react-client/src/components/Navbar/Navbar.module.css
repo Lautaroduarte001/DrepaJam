@@ -1,0 +1,104 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #111;
+  color: white;
+  padding: 0.5rem 1rem;
+  height: 60px;
+  border-bottom: 1px solid #333;
+  position: relative;
+}
+
+/* --- Desktop --- */
+.walletContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13%;
+  min-width: 170px;
+}
+.wallet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #ccc;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+}
+.coinCount {
+  font-weight: bold;
+}
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.notification {
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.avatar img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+
+
+
+/* Botón hamburguesa por defecto oculto */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  padding-bottom: 50px;
+}
+
+/* Contenedor de iconos móviles */
+.menuMobile {
+  display: none;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* --- Mobile (<768px) --- */
+@media (max-width: 768px) {
+  /* Ocultamos wallet, noti y avatar */
+
+  /* Mostramos iconos en el centro */
+  .menuMobile {
+    display: flex;
+  }
+
+  /* Mostramos hamburger al final */
+  .hamburger {
+    display: inline-flex;
+  }
+
+  /* Ajuste de padding para que no choque */
+  .navbar {
+    padding-right: 0.5rem;
+  }
+  .avatar span{
+    display: none;    
+    }
+}
