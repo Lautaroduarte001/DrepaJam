@@ -6,25 +6,26 @@ import InputField from '../../components/InputField/InputField'
 import Button from '../../components/Button/Button'
 import arroba from '/images/arroba.png'
 import inputStyles from '../../components/InputField/InputField.module.css'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 /** Interfaz para el estado del formulario */
 interface RegisterForm {
   username: string
-  fullname: string
+  fullName: string
   email: string
-  mobile: string
+  phoneNumber: string
   password: string
 }
 
-const Register: React.FC = () => {
+const Register = () => {
   const [form, setForm] = useState<RegisterForm>({
     username: '',
-    fullname: '',
+    fullName: '',
     email: '',
-    mobile: '',
+    phoneNumber: '',
     password: '',
   })
-  const [msgs, setMsgs] = useState<string[]>([])
+  const [error, setError] = useState<string | null>(null)
   const navigate = useNavigate()
 
   /** Cambia el valor de cualquier input */
@@ -36,10 +37,10 @@ const Register: React.FC = () => {
   /** Envía el formulario */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setMsgs([])
+    setError(null)
 
     try {
-      const res = await fetch('/register', {
+      const res = await fetch('/api/users/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -48,14 +49,14 @@ const Register: React.FC = () => {
 
       if (!res.ok) {
         // Suponemos que el backend devuelve { errors: string[] }
-        setMsgs(data.errors || ['Ocurrió un error inesperado'])
+        setError(data.errors || ['Ocurrió un error inesperado'])
       } else {
         // Registro exitoso, redirijo a login
         navigate('/login')
       }
     } catch (err) {
       console.error(err)
-      setMsgs(['No se pudo conectar con el servidor'])
+      setError('No se pudo conectar con el servidor')
     }
   }
 
@@ -67,11 +68,9 @@ const Register: React.FC = () => {
       bottomLinkTo="/login"
     >
       {/* Mensajes de error, si los hay */}
-      {msgs.map((m, i) => (
-        <div key={i} className="error">
-          {m}
-        </div>
-      ))}
+
+      {error && <ErrorMessage message={error} />}
+
 
       <form onSubmit={handleSubmit} noValidate>
         <InputField
@@ -86,9 +85,9 @@ const Register: React.FC = () => {
         />
         <InputField
           label="Nombre Real"
-          name="fullname"
+          name="fullName"
           type="text"
-          value={form.fullname}
+          value={form.fullName}
           onChange={handleChange}
           iconRight={<i className="fa-solid fa-address-card"></i>}
         />
@@ -102,9 +101,9 @@ const Register: React.FC = () => {
         />
         <InputField
           label="Número de Celular"
-          name="mobile"
+          name="phoneNumber"
           type="tel"
-          value={form.mobile}
+          value={form.phoneNumber}
           onChange={handleChange}
           iconRight={<i className="fa-solid fa-phone"></i>}
         />
