@@ -1,4 +1,4 @@
-package com.drepa.spring_server.user.model;
+package com.drepa.spring_server.user.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

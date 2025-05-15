@@ -1,7 +1,7 @@
 package com.drepa.spring_server.user.controller;
 
 import com.drepa.spring_server.user.dto.RegisterRequest;
-import com.drepa.spring_server.user.model.User;
+import com.drepa.spring_server.user.entity.User;
 import com.drepa.spring_server.user.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

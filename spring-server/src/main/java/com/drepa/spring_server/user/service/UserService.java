@@ -1,6 +1,6 @@
 package com.drepa.spring_server.user.service;
 import com.drepa.spring_server.user.dto.RegisterRequest;
-import com.drepa.spring_server.user.model.User;
+import com.drepa.spring_server.user.entity.User;
 import com.drepa.spring_server.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
