@@ -1,6 +1,6 @@
 // src/pages/Home.tsx
 import React, { useState } from "react";
-import Navbar from "../components/Navbar/NavBar";
+import Navbar from "../components/Navbar/Navbar";
 import SideBar from "../components/Sidebar/SideBar";
 import logo from "/images/logo.png";
 import bottomLogo from "/images/logo_letras.png";
@@ -18,7 +18,7 @@ const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setMobileMenuOpen((p) => !p);
 
-  const menuItems = [
+  const menuItemsDesktop = [
     { name: "Inicio", icon: <HomeIcon size={20} />, path: "/home" },
     { name: "Tienda", icon: <Store size={20} />, path: "/tienda" },
     { name: "Canciones", icon: <Music size={20} />, path: "/canciones" },
@@ -27,14 +27,24 @@ const Home = () => {
     { name: "Configuración", icon: <Settings size={20} />, path: "/configuracion" }
   ];
 
+  const menuItemsMobile = [
+    { name: "Inicio", icon: <HomeIcon size={20} />, path: "/home" },
+    { name: "Tienda", icon: <Store size={20} />, path: "/tienda" },
+    { name: "Votaciones", icon: <ClipboardList size={20} />, path: "/votaciones" },
+  ];
+
+
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-      <Navbar onToggleMobileMenu={toggleMobileMenu} />
+      <Navbar onToggleMobileMenu={toggleMobileMenu}
+        menuItems={menuItemsMobile}
+        currentPath="/home"
+      />
       <div style={{ display: "flex", flexGrow: 1, minHeight: 0 }}>
         <SideBar
           logo={logo}
           bottomLogo={bottomLogo}
-          menuItems={menuItems}
+          menuItems={menuItemsDesktop}
           currentPath="/home"
           isOpen={mobileMenuOpen}
           onClose={toggleMobileMenu}

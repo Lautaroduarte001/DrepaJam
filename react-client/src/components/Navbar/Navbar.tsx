@@ -2,13 +2,24 @@
 import React from "react";
 import styles from "./Navbar.module.css";
 import { Bell, Wallet, Menu } from "lucide-react";
-import { Home as HomeIcon, Store, ClipboardList } from "lucide-react";
+import { Home as HomeIcon, Store, ClipboardList, User } from "lucide-react";
+
+
+// Mobile
+interface MenuItem {
+  name: string;
+  icon: React.ReactNode;
+  path: string;
+}
+
 
 interface Props {
   onToggleMobileMenu: () => void;
+  menuItems: MenuItem[];
+  currentPath: string;
 }
 
-const Navbar = ({ onToggleMobileMenu }: Props) => {
+const Navbar = ({ onToggleMobileMenu, menuItems, currentPath }: Props) => {
   return (
     <nav className={styles.navbar}>
       {/* 1. Wallet (solo desktop) */}
@@ -20,17 +31,18 @@ const Navbar = ({ onToggleMobileMenu }: Props) => {
       </div>
 
       {/* 2. Iconos rápidos de navegación (solo mobile) */}
-      <div className={styles.menuMobile}>
-        <a href="/home">
-          <HomeIcon size={23} color="white" />
-        </a>
-        <a href="/tienda" >
-          <Store size={23} color="white" />
-        </a>
-        <a href="/votaciones">
-          <ClipboardList size={23} color="white" />
-        </a>
-      </div>
+      {menuItems.map((item) => (
+            <div
+              key={item.name}
+              className={
+                currentPath === item.path
+                  ? `${styles.menuItem} ${styles.active}`
+                  : styles.menuItem
+              }
+            >
+              {item.icon}
+            </div>
+          ))}
 
       {/* 3. Notificación + Avatar + Hamburger (desktop: oculta hamburger; mobile: oculta noti/avatar) */}
       <div className={styles.right}>
