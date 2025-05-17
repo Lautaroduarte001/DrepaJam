@@ -7,6 +7,7 @@
   width: 13%;
   min-width: 170px;
   padding: 20px;
+  transition: ease 0.5s;
 }
 .logoContainer {
   display: flex;
@@ -73,8 +74,9 @@
 }
 
 /* Ocultar el sidebar normal en mobile */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .sidebarContainer {
     display: none;
+    transition: ease 0.5s;
   }
 }

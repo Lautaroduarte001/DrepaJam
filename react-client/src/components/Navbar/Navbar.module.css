@@ -85,8 +85,8 @@
   }
 
 
-/* --- Mobile (<768px) --- */
-@media (max-width: 768px) {
+/* --- Mobile*/
+@media (max-width: 1000px) {
   .navbar{
     height: 50px;
   }

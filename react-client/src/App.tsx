@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import BackgroundScene from './components/BackgroundScene/BackgroundScene'
-import Home from './pages/Home'
+import Home from './pages/Home/Home'
 
 function App() {
   return (

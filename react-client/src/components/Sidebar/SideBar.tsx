@@ -18,14 +18,14 @@ interface Props {
   onClose: () => void;
 }
 
-const SideBar: React.FC<Props> = ({
+const SideBar = ({
   logo,
   bottomLogo,
   menuItems,
   currentPath,
   isOpen,
   onClose
-}) => {
+}:Props) => {
   return (
     <>
       {/* Desktop sidebar */}
